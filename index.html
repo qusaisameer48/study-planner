@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مخطط الدراسة</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f7ff;--card:#fff;--ink:#12233f;--mut:#6b7c99;--line:#dbe6f7;--pri:#2563eb;--pri2:#1d4ed8;--soft:#e4eeff;--ok:#16a34a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1324;--card:#121d36;--ink:#e6eeff;--mut:#8fa3c7;--line:#223356;--pri:#4f8bff;--pri2:#6ea0ff;--soft:#1a2a4d}}
+:root[data-theme="dark"]{--bg:#0b1324;--card:#121d36;--ink:#e6eeff;--mut:#8fa3c7;--line:#223356;--pri:#4f8bff;--pri2:#6ea0ff;--soft:#1a2a4d}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,'Segoe UI',Tahoma,sans-serif;line-height:1.6}
+.wrap{max-width:980px;margin:0 auto;padding:16px}
+header{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+h1{margin:0;font-size:1.6rem;font-weight:800;color:var(--pri)}
+.tabs{display:flex;gap:4px;background:var(--card);border:1px solid var(--line);padding:4px;border-radius:14px}
+.tabs button{border:0;background:none;color:var(--mut);font:inherit;font-weight:500;padding:6px 14px;border-radius:10px;cursor:pointer}
+.tabs button.on{background:var(--pri);color:#fff}
+.nav{display:flex;align-items:center;justify-content:center;gap:12px;margin:8px 0 16px}
+.nav .lbl{font-weight:800;font-size:1.15rem;min-width:200px;text-align:center}
+.ib{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--pri);font-size:1.3rem;cursor:pointer}
+.today{border:0;background:var(--soft);color:var(--pri);font:inherit;font-weight:700;padding:7px 14px;border-radius:20px;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid var(--pri);outline-offset:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px}
+.hero{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border:0;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.hero h2{margin:0;font-size:1.4rem}.hero p{margin:2px 0 0;opacity:.9}
+.ring{font-size:1.8rem;font-weight:800}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.dot{width:12px;height:12px;border-radius:50%;flex:none}
+.sh b{font-size:1.1rem}.sh small{color:var(--mut);margin-inline-start:auto}
+.bar{height:7px;background:var(--soft);border-radius:9px;overflow:hidden;margin:4px 0 10px}
+.bar i{display:block;height:100%;background:var(--pri);border-radius:9px;transition:width .3s}
+.t{display:flex;align-items:center;gap:10px;padding:7px 4px;border-bottom:1px dashed var(--line)}
+.t:last-of-type{border-bottom:0}
+.t input[type=checkbox]{width:20px;height:20px;accent-color:var(--pri);cursor:pointer;flex:none}
+.t span{flex:1}.t.done span{text-decoration:line-through;color:var(--mut)}
+.t .x{border:0;background:none;color:var(--mut);cursor:pointer;font-size:1.1rem}
+.add{display:flex;gap:6px;margin-top:8px}
+.add input{flex:1;min-width:0;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
+.add button,.btn{border:0;background:var(--pri);color:#fff;font:inherit;font-weight:700;padding:8px 14px;border-radius:10px;cursor:pointer}
+.free{text-align:center;padding:36px 10px}.free h2{color:var(--pri);margin:0 0 6px}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.scroll{overflow-x:auto}.scroll .grid{min-width:640px}
+.hd{text-align:center;color:var(--mut);font-weight:700;font-size:.85rem;padding:4px}
+.cell{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px;min-height:84px;cursor:pointer;text-align:start;font:inherit;color:var(--ink)}
+.cell.out{opacity:.4}.cell.now{border:2px solid var(--pri);background:var(--soft)}
+.cell .n{font-weight:800;font-size:.9rem}
+.cell .dots{display:flex;flex-wrap:wrap;gap:3px;margin:4px 0}
+.cell .dots i{width:9px;height:9px;border-radius:50%}
+.cell small{color:var(--ok);font-weight:700;display:block}
+.chip{display:block;font-size:.75rem;padding:1px 6px;border-radius:6px;margin-top:3px;color:#fff;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.cell.fr{background:repeating-linear-gradient(45deg,var(--card),var(--card) 8px,var(--soft) 8px,var(--soft) 16px)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.tag{font-size:.75rem;background:var(--soft);color:var(--pri);padding:1px 8px;border-radius:8px;margin-inline-start:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>📚 مخطط الدراسة</h1>
+<div class="tabs" id="tabs"></div></header>
+<div class="nav" id="nav"></div>
+<main id="app"></main>
+</div>
+<script>
+const DAYS=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+const MON=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+const VIEWS={day:'يومي',week:'أسبوعي',month:'شهري',subj:'المواد'};
+const mk=(a)=>a.map((x,i)=>({id:'t'+i+Math.random().toString(36).slice(2,6),text:x,done:false,date:null}));
+const DEF=()=>[
+{id:'asm',name:'Assembly',color:'#2563eb',days:[1,3],tasks:mk(['مراجعة التعليمات الأساسية (MOV, ADD, SUB)','حل تمارين المسجّلات','تمارين Jump والـ Loops','تمارين الـ Stack'])},
+{id:'dis',name:'الأساس الرياضي للحوسبة (Discrete)',color:'#7c3aed',days:[0],tasks:mk(['المنطق والعبارات','نظرية المجموعات','العلاقات والدوال','حل أسئلة سنوات سابقة'])},
+{id:'oop',name:'OOP',color:'#0891b2',days:[2],tasks:mk(['Classes & Objects','Inheritance','Polymorphism','تمرين برمجي تطبيقي'])},
+{id:'cs50',name:'CS50',color:'#e11d48',days:[4,6],tasks:mk(['Lecture 0 – Scratch','Lecture 1 – C','Problem Set 1','Lecture 2 – Arrays','Problem Set 2'])},
+{id:'dig',name:'Digital',color:'#ea580c',days:[4],tasks:mk(['البوابات المنطقية','الجبر البولي','Karnaugh Maps','الدوائر التوافقية'])},
+{id:'oth',name:'باقي مواد الجامعة',color:'#059669',days:[6],tasks:mk(['الرسم الهندسي – واجب','المشاغل الهندسية – تقرير','مهارات الاتصال – قراءة'])}
+];
+let S=DEF();
+try{const r=localStorage.getItem('planner-v1');if(r)S=JSON.parse(r)}catch(e){}
+const save=()=>{try{localStorage.setItem('planner-v1',JSON.stringify(S))}catch(e){}};
+let view='day',cur=new Date();cur.setHours(12,0,0,0);
+const p=n=>String(n).padStart(2,'0');
+const key=d=>d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate());
+const addD=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const todayK=()=>key(new Date());
+const on=d=>S.filter(s=>s.days.includes(d.getDay()));
+const doneOn=k=>S.reduce((a,s)=>a+s.tasks.filter(t=>t.date===k).length,0);
+const prog=s=>{const d=s.tasks.filter(t=>t.done).length;return[d,s.tasks.length,s.tasks.length?Math.round(d/s.tasks.length*100):0]};
+
+function taskRow(s,t){return `<div class="t ${t.done?'done':''}"><input type="checkbox" ${t.done?'checked':''} data-a="tog" data-s="${s.id}" data-t="${t.id}" aria-label="إنجاز"><span>${esc(t.text)}</span><button class="x" data-a="del" data-s="${s.id}" data-t="${t.id}" aria-label="حذف">✕</button></div>`}
+function addRow(s){return `<div class="add"><input placeholder="أضف مهمة جديدة…" data-in="${s.id}"><button data-a="add" data-s="${s.id}">إضافة</button></div>`}
+
+function dayView(){
+const k=key(cur),subs=on(cur),dn=doneOn(k);
+const isF=cur.getDay()===5;
+let h=`<div class="card hero"><div><h2>${DAYS[cur.getDay()]}</h2><p>${subs.length?'مواد اليوم: '+subs.map(s=>esc(s.name.split(' (')[0])).join('، '):'لا مواد مجدولة'}</p></div><div class="ring">${dn}<small style="font-size:.9rem;font-weight:500"> منجزة</small></div></div>`;
+if(isF||!subs.length)return h+`<div class="card free"><h2>🎉 يوم فري</h2><p>ارتح وجدّد نشاطك، ما في دراسة اليوم.</p></div>`;
+subs.forEach(s=>{const [d,n,pc]=prog(s);const ts=s.tasks.filter(t=>!t.done||t.date===k);
+h+=`<div class="card"><div class="sh"><span class="dot" style="background:${s.color}"></span><b>${esc(s.name)}</b><small>${d}/${n}</small></div><div class="bar"><i style="width:${pc}%"></i></div>${ts.length?ts.map(t=>taskRow(s,t)).join(''):'<p style="color:var(--mut)">أنجزت كل المهام، أضف مهام جديدة 👏</p>'}${addRow(s)}</div>`});
+return h}
+
+function weekView(){
+const st=addD(cur,-((cur.getDay()+1)%7));let h='<div class="scroll"><div class="grid">';
+for(let i=0;i<7;i++){const d=addD(st,i),k=key(d),subs=on(d);
+h+=`<button class="cell ${k===todayK()?'now':''} ${d.getDay()===5?'fr':''}" style="min-height:150px" data-a="go" data-k="${k}"><div class="hd" style="text-align:start;padding:0">${DAYS[d.getDay()]}</div><div class="n">${d.getDate()} ${MON[d.getMonth()]}</div>${d.getDay()===5?'<div style="margin-top:8px">🎉 فري</div>':subs.map(s=>`<span class="chip" style="background:${s.color}">${esc(s.name.split(' (')[0])}</span>`).join('')}${doneOn(k)?`<small>✔ ${doneOn(k)} منجزة</small>`:''}</button>`}
+return h+'</div></div>'}
+
+function monthView(){
+const f=new Date(cur.getFullYear(),cur.getMonth(),1,12),st=addD(f,-((f.getDay()+1)%7));
+let h='<div class="grid">'+[6,0,1,2,3,4,5].map(i=>`<div class="hd">${DAYS[i]}</div>`).join('');
+for(let i=0;i<42;i++){const d=addD(st,i),k=key(d),o=d.getMonth()!==cur.getMonth();if(i>=35&&o)break;
+h+=`<button class="cell ${o?'out':''} ${k===todayK()?'now':''} ${d.getDay()===5?'fr':''}" data-a="go" data-k="${k}"><div class="n">${d.getDate()}</div><div class="dots">${on(d).map(s=>`<i style="background:${s.color}"></i>`).join('')}</div>${doneOn(k)?`<small>✔ ${doneOn(k)}</small>`:''}</button>`}
+return h+'</div><div class="card" style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap">'+S.map(s=>`<span><span class="dot" style="background:${s.color};display:inline-block"></span> ${esc(s.name.split(' (')[0])}</span>`).join('')+'</div>'}
+
+function subjView(){
+return '<div class="two">'+S.map(s=>{const [d,n,pc]=prog(s);
+return `<div class="card"><div class="sh"><span class="dot" style="background:${s.color}"></span><b>${esc(s.name)}</b><small>${pc}%</small></div><div style="margin-bottom:6px">${s.days.map(x=>`<span class="tag">${DAYS[x]}</span>`).join('')}</div><div class="bar"><i style="width:${pc}%"></i></div><div style="color:var(--mut);font-size:.85rem">أنجزت ${d} من ${n} مهمة</div>${s.tasks.map(t=>taskRow(s,t)).join('')}${addRow(s)}</div>`}).join('')+'</div>'}
+
+function render(){
+document.getElementById('tabs').innerHTML=Object.entries(VIEWS).map(([k,v])=>`<button class="${k===view?'on':''}" data-a="view" data-v="${k}">${v}</button>`).join('');
+const nav=document.getElementById('nav');
+if(view==='subj')nav.innerHTML='';
+else{let l;
+if(view==='day')l=DAYS[cur.getDay()]+' '+cur.getDate()+' '+MON[cur.getMonth()]+' '+cur.getFullYear();
+else if(view==='week'){const s=addD(cur,-((cur.getDay()+1)%7)),e=addD(s,6);l=s.getDate()+' '+MON[s.getMonth()]+' – '+e.getDate()+' '+MON[e.getMonth()]+' '+e.getFullYear()}
+else l=MON[cur.getMonth()]+' '+cur.getFullYear();
+nav.innerHTML=`<button class="ib" data-a="nav" data-n="1" aria-label="التالي">›</button><div class="lbl">${l}</div><button class="ib" data-a="nav" data-n="-1" aria-label="السابق">‹</button><button class="today" data-a="today">اليوم</button>`}
+const fn={day:dayView,week:weekView,month:monthView,subj:subjView}[view];
+const keep=document.activeElement&&document.activeElement.dataset.in;
+document.getElementById('app').innerHTML=fn();}
+
+function addTask(sid){
+const inp=document.querySelector(`[data-in="${sid}"]`);const v=inp.value.trim();if(!v)return;
+S.find(s=>s.id===sid).tasks.push({id:'t'+Date.now(),text:v,done:false,date:null});save();render()}
+
+document.addEventListener('click',e=>{
+const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a;
+if(a==='view'){view=b.dataset.v}
+else if(a==='nav'){const n=+b.dataset.n;if(view==='day')cur=addD(cur,n);else if(view==='week')cur=addD(cur,7*n);else cur=new Date(cur.getFullYear(),cur.getMonth()+n,1,12)}
+else if(a==='today'){cur=new Date();cur.setHours(12,0,0,0)}
+else if(a==='go'){const [y,m,d]=b.dataset.k.split('-').map(Number);cur=new Date(y,m-1,d,12);view='day'}
+else if(a==='del'){const s=S.find(x=>x.id===b.dataset.s);s.tasks=s.tasks.filter(t=>t.id!==b.dataset.t);save()}
+else if(a==='add'){return addTask(b.dataset.s)}
+else return;
+render()});
+document.addEventListener('change',e=>{
+const c=e.target;if(c.dataset.a!=='tog')return;
+const t=S.find(s=>s.id===c.dataset.s).tasks.find(t=>t.id===c.dataset.t);
+t.done=c.checked;t.date=c.checked?key(view==='day'?cur:new Date()):null;save();render()});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.dataset.in)addTask(e.target.dataset.in)});
+render();
+</script>
+</body>
+</html>
